@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class Round : MonoBehaviour
 {
-    public Animator animator;
-
     [Header("Game Rounds")]
-    public int round;
     public Text roundText;
+    public static int roundNum;
 
     public static bool show = false;
     
+    Animator animator;
+    
     void Awake()
     {
-        round = 0;
+        animator = GetComponent<Animator>();
+        roundNum = 0;
 
     }
     
@@ -33,8 +34,8 @@ public class Round : MonoBehaviour
 
     public void ShowNewRound()
     {
-        ++round;
-        roundText.text = "Round " + round.ToString();
+        ++roundNum;
+        roundText.text = "Round " + roundNum.ToString();
 
         animator.SetTrigger("Show");
 

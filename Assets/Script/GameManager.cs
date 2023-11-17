@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Points")]
     public int points;
     public Text pointsText;
 
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     
     [Space(10)]
     public List<GameObject> supplySpawnPoints;
+    public List<GameObject> obstacles;
 
     [Header("GameOver")]
     public GameObject gameOverScreen;
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        playerDead = true;
+        playerDead = false;
         gameOverScreen.SetActive(false);
         
         for(int i = 0; i < supplySpawnPoints.Count; ++i)
@@ -50,9 +52,9 @@ public class GameManager : MonoBehaviour
         SpawnEnemies();
         MakeAppearSupply();
 
-        // Limit framerate to cinematic 24fps.
+        /*// Limit framerate to cinematic 24fps.
         QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = 200;
+        Application.targetFrameRate = 200;*/
 
     }
 
@@ -83,6 +85,8 @@ public class GameManager : MonoBehaviour
                 
                 UpdateScore(1000);
 
+                // Activate move camera void();
+
                 SpawnEnemies();
                 MakeAppearSupply();
 
@@ -107,7 +111,11 @@ public class GameManager : MonoBehaviour
 
     public void SpawnEnemies()
     {
+        // Check round number
+        // Depending change Enemy SpawnPoint
+        
         enemyAmount += 3;
+        
         
         for (int i = 0; i < enemyAmount; ++i)
         {
@@ -133,12 +141,6 @@ public class GameManager : MonoBehaviour
             supplySpawnPoints[c].SetActive(true);
 
         }
-
-    }
-
-    public void Reset()
-    {
-
 
     }
 

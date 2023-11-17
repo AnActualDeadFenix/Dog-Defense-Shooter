@@ -20,9 +20,7 @@ public class CameraMovement : MonoBehaviour
     float inX;
     float inY;
 
-    // Test //
-    KeyCode changeSens = KeyCode.P; // Editor Speed <-- P --> Build Speed
-    float editorSens = 400f;
+    public static bool canMoveCamera;
 
     void Start()
     {
@@ -33,7 +31,8 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        CameraStuff();
+        if(canMoveCamera)
+            CameraStuff();
 
     }
 
@@ -42,20 +41,9 @@ public class CameraMovement : MonoBehaviour
         float mouseX;
         float mouseY;
 
-        if(Input.GetKeyDown(changeSens))
-        {
-            // Editor mouse input
-            mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * editorSens;
-            mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * editorSens;
-
-        }
-        else
-        {
-            // Normal mouse input
-            mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sensX;
-            mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensY;
-
-        }
+        // Mouse input
+        mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sensX;
+        mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensY;
         
         yRotation += mouseX;
         

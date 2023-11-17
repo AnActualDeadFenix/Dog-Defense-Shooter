@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraHolder : MonoBehaviour
 {
     [Header("Cameras Positions")]
-    public Transform cpOutside;
-    public Transform cpInside;
+    public Transform cpTurret;
+    public Transform cpTransition;
 
     [Space(10)]
     public KeyCode change = KeyCode.R;
@@ -15,10 +15,9 @@ public class CameraHolder : MonoBehaviour
 
     void Start()
     {
-        transform.position = cpOutside.position;
+        transform.position = cpTurret.position;
 
     }
-    
     void Update()
     {
         if(Input.GetKeyDown(change))
@@ -29,11 +28,11 @@ public class CameraHolder : MonoBehaviour
         }
         
         if(!canMovePlayer)
-            transform.position = cpOutside.position;
+            transform.position = cpTurret.position;
 
         else
-            transform.position = cpInside.position;
+            transform.position = cpTransition.position;
         
     }
-    
+
 }

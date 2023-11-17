@@ -12,12 +12,13 @@ public class Torreta : MonoBehaviour
     [Space(5)]
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
-    public float bulletSpeed = 10f;
-    public static int totalAmmo = 20;
+    public float bulletSpeed = 20f;
+    public static int totalAmmo = 10;
     int maxAmmo;
 
     [Header("KeyCodes")]
     public KeyCode shoot = KeyCode.Mouse0;
+    public KeyCode reload = KeyCode.R;
 
     float xRotation;
     bool canShoot;
@@ -80,6 +81,12 @@ public class Torreta : MonoBehaviour
             canShoot = false;
         else
             canShoot = true;
+        
+        if (Input.GetKeyDown(reload)) // Reload Gun
+        {
+            totalAmmo = maxAmmo;
+
+        }
         
         if (Input.GetKeyDown(shoot) && canShoot && !CameraHolder.canMovePlayer)
         {
