@@ -18,6 +18,10 @@ public class CameraHolder : MonoBehaviour
         canMovePlayer = true;
         transform.position = cpPlayer.position;
 
+        /*// Limit framerate to cinematic 24fps.
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 200;*/
+
     }
     void Update()
     {

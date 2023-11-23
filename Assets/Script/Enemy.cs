@@ -20,12 +20,12 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
-        player = GameObject.Find("OutsideTruck").transform;
+        player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
 
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        //gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        gameManager.EnemyHasAppeared();
+        //gameManager.EnemyHasAppeared();
         
     }
 
@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            gameManager.EnemyHasDied();
+            //gameManager.EnemyHasDied();
             
             Invoke(nameof(DestroyEnemy), .01f);
             
