@@ -8,8 +8,8 @@ public class CameraMovement : MonoBehaviour
     public float sensX;
     public float sensY;
     
-    public Transform oriOutside;
-    public Transform oriInside;
+    // public Transform oriOutside;
+    public Transform oriPlayer;
 
     float xRotation;
     float yRotation;
@@ -20,8 +20,6 @@ public class CameraMovement : MonoBehaviour
     float inX;
     float inY;
 
-    public static bool canMoveCamera;
-
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -31,7 +29,7 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        if(canMoveCamera)
+        if(CameraHolder.canMovePlayer)
             CameraStuff();
 
     }
@@ -50,6 +48,10 @@ public class CameraMovement : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        oriPlayer.rotation = Quaternion.Euler(0, yRotation, 0);
+
+        /*
         // Set rotation to old rotation //
         if(CameraHolder.cameraChange)
         {
@@ -89,7 +91,7 @@ public class CameraMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
             oriInside.rotation = Quaternion.Euler(0, yRotation, 0);
 
-        }
+        }*/
 
     }
 

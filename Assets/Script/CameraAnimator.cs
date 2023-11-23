@@ -39,7 +39,7 @@ public class CameraAnimator : MonoBehaviour
 
         transform.position = tcPos.position;
         truck.transform.position = truckPos[0].transform.position;
-        CameraMovement.canMoveCamera = true;
+        CameraHolder.canMovePlayer = true;
 
     }
 
@@ -51,7 +51,7 @@ public class CameraAnimator : MonoBehaviour
             Debug.Log("Round: " + Round.roundNum);
             
             inCutscene = !inCutscene;
-            CameraMovement.canMoveCamera = !CameraMovement.canMoveCamera;
+            CameraHolder.canMovePlayer = !CameraHolder.canMovePlayer;
             Round.show = true;
             
             // Move Camera and truck to determine cutscene position, then turn of the truck model
@@ -76,7 +76,7 @@ public class CameraAnimator : MonoBehaviour
         Debug.Log("Off Cutscene");
             
         inCutscene = !inCutscene;
-        CameraMovement.canMoveCamera = !CameraMovement.canMoveCamera;
+        CameraHolder.canMovePlayer = !CameraHolder.canMovePlayer;
 
         truck.SetActive(true);
         transform.position = tcPos.transform.position;

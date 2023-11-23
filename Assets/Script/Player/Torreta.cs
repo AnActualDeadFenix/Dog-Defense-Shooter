@@ -27,6 +27,7 @@ public class Torreta : MonoBehaviour
     {
         maxAmmo = totalAmmo;
         ammoText.text = totalAmmo.ToString();
+        canShoot = true;
 
         SetCamera(true);
         
@@ -34,7 +35,7 @@ public class Torreta : MonoBehaviour
     
     void Update()
     {
-        if(!CameraHolder.canMovePlayer)
+        if(CameraHolder.canMovePlayer)
         {
             //CameraStuff();
             GunStuff();
@@ -51,25 +52,6 @@ public class Torreta : MonoBehaviour
         ammoText.text = totalAmmo.ToString();
         
     }
-
-    /*void CameraStuff()
-    {
-        // Get mouse input
-        float mouseX = Input.GetAxis("Mouse X") * mouseSens * Time.fixedDeltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSens * Time.fixedDeltaTime;
-
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        // Rotation camera and player && move Audio Listener
-        if (!MoveCamera.cameraIsInside)  // Camera Outside
-        {
-            outside.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            playerTurret.Rotate(Vector3.up * mouseX);
-
-        }
-
-    }*/
 
     public void GunStuff()
     {
@@ -88,7 +70,7 @@ public class Torreta : MonoBehaviour
 
         }
         
-        if (Input.GetKeyDown(shoot) && canShoot && !CameraHolder.canMovePlayer)
+        if (Input.GetKeyDown(shoot) && canShoot && CameraHolder.canMovePlayer)
         {
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
@@ -105,8 +87,8 @@ public class Torreta : MonoBehaviour
 
     public void SetCamera(bool set)
     {
+        // Debug.Log("canShoot = " + set);
         UITorreta.SetActive(set);
-
         canShoot = set;
 
     }
