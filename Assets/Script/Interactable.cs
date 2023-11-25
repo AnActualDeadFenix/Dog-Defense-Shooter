@@ -10,11 +10,6 @@ public class Interactable : MonoBehaviour
 {
     public Transform InteractorSource;
     public float InteractRange;
-    
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -26,6 +21,7 @@ public class Interactable : MonoBehaviour
                 if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
                 {
                     interactObj.Interact();
+                    Debug.Log("Interacting");
 
                 }
 
