@@ -72,6 +72,8 @@ public class Torreta : MonoBehaviour
         
         if (Input.GetKeyDown(shoot) && canShoot && CameraHolder.canMovePlayer)
         {
+            FindObjectOfType<AudioManager>().Play("Shoot");
+            
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
 

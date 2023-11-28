@@ -58,14 +58,15 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        enemyBody.LookAt(playerTrans);
+
         if(playGrowl)
         {
             playGrowl = false;
-            StartCoroutine("ZombieSound", 0.01f);
+            FindObjectOfType<AudioManager>().Play("EnemyGrowl01");
+            StartCoroutine("ZombieSound");
 
         }
-        
-        enemyBody.LookAt(playerTrans);
         
         if(focusOnPlayer)
             ChasingPlayer();
@@ -174,8 +175,6 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator ZombieSound()
     {
-        FindObjectOfType<AudioManager>().Play("EnemyGrowl");
-
         yield return new WaitForSeconds(3f);
         playGrowl = true;
 
@@ -183,6 +182,7 @@ public class Enemy : MonoBehaviour
 
     void DestroyEnemy()
     {
+        FindObjectOfType<AudioManager>().Stop("EnemyGrowl01");
         Destroy(gameObject);
 
     }

@@ -2250,10 +2250,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: EnemyGrowl
+  - name: EnemyGrowl01
     clip: {fileID: 8300000, guid: f887a833bfc98e64eb5e62d926fcaa6c, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: b8cc8a3d23fe9dd4ba5d527fce1ac91e, type: 3}
     volume: 0.25
-    pitch: 1.35
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Music
+    clip: {fileID: 8300000, guid: 7c6c7f6eeb99eda42956e3d925a42769, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
 --- !u!4 &514386087
 Transform:
