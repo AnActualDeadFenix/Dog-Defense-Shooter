@@ -5,7 +5,7 @@ using UnityEngine;
 public class Generator : MonoBehaviour, IInteractable
 {
     [Header("Round")]
-    public GameObject enemy;
+    public GameObject enemies;
     public List<Transform> enemySpawnPoints;
 
     [SerializeField] private float currentTime;
@@ -86,7 +86,8 @@ public class Generator : MonoBehaviour, IInteractable
         
         // Section
         Vector3 randomPosition = new Vector3(enemySpawnPoints[spawnIndex].transform.position.x, enemySpawnPoints[spawnIndex].transform.position.y, enemySpawnPoints[spawnIndex].transform.position.z);
-        Instantiate(enemy, randomPosition, Quaternion.identity);
+        GameObject enemy = Instantiate(enemies, randomPosition, Quaternion.identity);
+        enemy.GetComponent<Enemy>().triggerEnemy = false;
 
         yield return new WaitForSeconds(2f);
         

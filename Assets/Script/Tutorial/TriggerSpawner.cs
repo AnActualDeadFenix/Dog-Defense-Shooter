@@ -31,7 +31,8 @@ public class TriggerSpawner : MonoBehaviour
                 // Section
                 Vector3 randomPosition = new Vector3(enemySpawnPoints[spawnIndex].transform.position.x, enemySpawnPoints[spawnIndex].transform.position.y, enemySpawnPoints[spawnIndex].transform.position.z);
                 
-                Instantiate(enemiesType[enemyIndex], randomPosition, Quaternion.identity);
+                GameObject enemy = Instantiate(enemiesType[enemyIndex], randomPosition, Quaternion.identity);
+                enemy.GetComponent<Enemy>().triggerEnemy = true;
                 
             }
         

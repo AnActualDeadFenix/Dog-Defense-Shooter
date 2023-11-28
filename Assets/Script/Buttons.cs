@@ -25,7 +25,7 @@ public class Buttons : MonoBehaviour
 
     public void ToGame()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Tutorial_Level"); // Tutorial_Level
 
     }
 

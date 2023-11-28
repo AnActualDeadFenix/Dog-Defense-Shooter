@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7536499369431712764}
-  - component: {fileID: 476164840707849467}
+  - component: {fileID: 4759993579889943171}
   - component: {fileID: 584816110454340859}
   - component: {fileID: 3541267817123689130}
   - component: {fileID: 6030258190067634421}
@@ -36,8 +36,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &476164840707849467
-BoxCollider:
+--- !u!136 &4759993579889943171
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -46,8 +46,9 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 5, z: 1}
+  m_Radius: 1
+  m_Height: 5
+  m_Direction: 1
   m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!54 &584816110454340859
 Rigidbody:
@@ -74,7 +75,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5601329549193504673}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 5
   m_Acceleration: 12
   avoidancePriority: 50
@@ -101,14 +102,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 3541267817123689130}
   health: 1
+  movementSpeed: 5
+  sightRange: 5
+  attackRange: 12
+  playerInSightRange: 0
+  playerInAttackRange: 0
   enemyBody: {fileID: 4161649020246934217}
-  player: {fileID: 0}
+  playerTrans: {fileID: 0}
+  targetTrans: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
   PLAYER:
     serializedVersion: 2
     m_Bits: 64
+  allowToChange: 0
+  focusOnPlayer: 0
+  triggerEnemy: 0
 --- !u!1 &5981161198232377795
 GameObject:
   m_ObjectHideFlags: 0
